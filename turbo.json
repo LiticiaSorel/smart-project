@@ -1,15 +1,22 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": [".env"], 
+  "globalDependencies": [".env"],
+  "globalPassThroughEnv": ["NODE_ENV", "CI", "JWT_SECRET", "DATABASE_URL", "API_PORT"],
   "tasks": {
+    "generate": {
+      "cache": true,
+      "outputs": ["packages/database/generated/**"],
+      "env": ["DATABASE_URL"]
+    },
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "generate"],
       "outputs": [".next/**", "dist/**"],
       "env": ["NODE_ENV", "API_PORT", "JWT_SECRET", "DATABASE_URL", "FRONTEND_URL"]
     },
     "test": {
-      "dependsOn": ["^build"],
-      "inputs": ["src/**/*.ts", "src/**/*.test.ts"]
+      "dependsOn": ["^build", "generate"],
+      "inputs": ["src/**/*.ts", "src/**/*.test.ts"],
+      "env": ["JWT_SECRET", "DATABASE_URL", "API_PORT"]
     },
     "dev": {
       "cache": false,

@@ -3,8 +3,12 @@ import express from 'express';
 import cors from 'cors';
 import userRoutes from './routes/user.routes';
 import { errorHandler } from './middlewares/error.middleware';
+import projectRoutes from './routes/project.routes';
+import taskRoutes from './routes/task.routes';
+import swaggerRouter from './middlewares/swagger.middleware';
 
 const app = express();
+const API_BASE_PATH = '/api' as const;
 
 app.disable('x-powered-by');
 
@@ -32,12 +36,17 @@ app.use(cors({
 
 app.use(express.json());
 
+// Injection de la documentation Swagger
+app.use('/docs', swaggerRouter);
+
 app.get('/', (req, res) => {
     res.send("Bienvenue sur l'API de Smart-project");
 })
 
 // Déclaration des routes de l'API
-app.use('/api/users', userRoutes);
+app.use(`${API_BASE_PATH}/users`, userRoutes);
+app.use(API_BASE_PATH, projectRoutes);
+app.use(API_BASE_PATH, taskRoutes);
 
 // Le middleware d'erreur doit TOUJOURS être enregistré en dernier
 app.use(errorHandler);
