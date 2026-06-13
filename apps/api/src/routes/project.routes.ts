@@ -51,6 +51,15 @@ projectRoutes.post(
     projectController.register
 );
 
+projectRoutes.post(
+    '/projects',
+    [
+        requireAuth,
+        processRequest({ body: ProjectSchema }),
+    ],
+    projectController.register
+);
+
 /**
  * @openapi
  * /projects:

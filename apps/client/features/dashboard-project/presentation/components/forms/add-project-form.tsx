@@ -105,7 +105,7 @@ const AddProjectForm = () => {
                                 />
                                 <InputGroupAddon align="block-end">
                                     <InputGroupText className="tabular-nums">
-                                        {field.value.length}/100 characters
+                                        {(field.value ?? "").length}/100 characters
                                     </InputGroupText>
                                 </InputGroupAddon>
                             </InputGroup>

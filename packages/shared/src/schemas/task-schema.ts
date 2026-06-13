@@ -11,4 +11,4 @@ export const TaskSchema = z.object({
   assignedUserId: z.string().uuid(),
 });
 
-export type TaskInput = z.infer<typeof TaskSchema>;
+export type TaskInput = z.input<typeof TaskSchema>;

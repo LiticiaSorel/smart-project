@@ -1,5 +1,5 @@
 import { getPrisma } from "@repo/database";
-import { TaskInput } from "@repo/shared";
+import { ProjectPriority, TaskInput, TaskStatus } from "@repo/shared";
 
 export class TaskRepository {
     readonly #prisma = getPrisma();
@@ -10,8 +10,8 @@ export class TaskRepository {
                 title: taskData.title,
                 description: taskData.description,
                 endDate: taskData.endDate ? new Date(taskData.endDate) : null,
-                priority: taskData.priority,
-                statut: taskData.statut,
+                priority: taskData.priority ?? ProjectPriority.COULD,
+                statut: taskData.statut ?? TaskStatus.NOT_STARTED,
                 projectId: taskData.projectId,
                 assignedUserId: taskData.assignedUserId,
             },

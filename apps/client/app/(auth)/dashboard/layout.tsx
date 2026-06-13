@@ -1,6 +1,7 @@
 import DashboardHeader from "@/components/navigation/dashboard-header";
 import { AppSidebar } from "@/components/shared/app-sidebar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { ProjectCreateModalHost } from "@/features/dashboard-project/presentation/components/modals/project-create-modal-host";
 import { Metadata } from "next";
 import { Toaster } from "sonner";
 
@@ -19,6 +20,7 @@ export default function DashboardLayout({children}: Readonly<{
                     <SidebarInset className="min-w-0 flex-1 bg-white">
                     <DashboardHeader />
                     {children}
+                    <ProjectCreateModalHost />
                     <Toaster />
                     </SidebarInset>
                 </div>
