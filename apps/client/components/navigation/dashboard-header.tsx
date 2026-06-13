@@ -92,25 +92,25 @@ const DashboardHeader = () => {
   }
 
   return (
-    <header className="relative flex h-16 shrink-0 items-center border-b border-border bg-background transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
-      <div className="flex w-full items-center justify-between px-4 md:px-6">
+    <header className="relative flex h-[68px] shrink-0 items-center border-b border-[#DBDBDB] bg-white transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
+      <div className="flex w-full items-center justify-between px-5 md:px-9">
         {/* Left section: Sidebar trigger + Search */}
         <div className="flex items-center gap-3 flex-1">
-          <SidebarTrigger className="-ml-1" />
+          <SidebarTrigger className="-ml-2 text-[#787486] hover:bg-[#F5F5F7] hover:text-[#0D062D]" />
           <Separator
             orientation="vertical"
-            className="mr-1 data-[orientation=vertical]:h-4"
+            className="mr-3 bg-transparent data-[orientation=vertical]:h-4"
           />
 
           {/* Search bar */}
-          <div className="relative flex items-center max-w-md flex-1">
+          <div className="relative flex max-w-[420px] flex-1 items-center">
             <button
               type="button"
               onClick={handleSearch}
-              className="absolute left-3 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+              className="absolute left-4 flex items-center justify-center text-[#787486] transition-colors hover:text-[#0D062D]"
               aria-label="Search projects"
             >
-              <Search className="h-4.5 w-4.5" />
+              <Search className="h-5 w-5" />
             </button>
             <input
               ref={inputRef}
@@ -119,40 +119,40 @@ const DashboardHeader = () => {
               onChange={(e) => setSearchTerm(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Search for anything..."
-              className="h-10 w-full rounded-lg border border-border bg-transparent pl-10 pr-4 text-sm text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-ring focus:ring-2 focus:ring-ring/20"
+              className="h-11 w-full rounded-md border border-transparent bg-[#F5F5F5] pl-12 pr-4 text-sm text-[#0D062D] outline-none transition-colors placeholder:text-[#787486] focus:border-[#5030E5]/25 focus:ring-2 focus:ring-[#5030E5]/10"
             />
           </div>
         </div>
 
         {/* Right section: Action icons */}
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-4">
           <Button
             variant="ghost"
             size="icon"
-            className="h-9 w-9 text-muted-foreground hover:text-foreground cursor-pointer"
+            className="h-9 w-9 text-[#787486] hover:bg-[#F5F5F7] hover:text-[#0D062D]"
             aria-label="Calendar"
           >
-            <CalendarDays className="h-4.5 w-4.5" />
+            <CalendarDays className="h-5 w-5" />
           </Button>
 
           <Button
             variant="ghost"
             size="icon"
-            className="h-9 w-9 text-muted-foreground hover:text-foreground cursor-pointer"
+            className="h-9 w-9 text-[#787486] hover:bg-[#F5F5F7] hover:text-[#0D062D]"
             aria-label="Help"
           >
-            <CircleHelp className="h-4.5 w-4.5" />
+            <CircleHelp className="h-5 w-5" />
           </Button>
 
           <Button
             variant="ghost"
             size="icon"
-            className="relative h-9 w-9 text-muted-foreground hover:text-foreground cursor-pointer"
+            className="relative h-9 w-9 text-[#787486] hover:bg-[#F5F5F7] hover:text-[#0D062D]"
             aria-label="Notifications"
           >
-            <Bell className="h-4.5 w-4.5" />
+            <Bell className="h-5 w-5" />
             {/* Notification indicator dot */}
-            <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-(--text-danger) ring-2 ring-background" />
+            <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-[#D25B68] ring-2 ring-white" />
           </Button>
         </div>
       </div>
@@ -170,7 +170,7 @@ const DashboardHeader = () => {
           {/* Results panel */}
           <div
             ref={dropdownRef}
-            className={`absolute top-full left-0 right-0 z-50 mx-4 md:mx-6 mt-1 max-h-80 overflow-y-auto rounded-xl border border-border bg-background ${isClosing ? 'search-dropdown-exit' : 'search-dropdown-enter'
+            className={`absolute left-5 right-5 top-full z-50 mt-2 max-h-80 overflow-y-auto rounded-xl border border-[#DBDBDB] bg-white md:left-9 md:right-auto md:w-[420px] ${isClosing ? 'search-dropdown-exit' : 'search-dropdown-enter'
               }`}
             style={{ boxShadow: 'var(--shadow-soft-lg)' }}
           >
